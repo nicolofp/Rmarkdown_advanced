@@ -1,0 +1,39 @@
+---
+title: "{{title}} Report"
+author: "FirstName LastName"
+date: "`r weekdays(Sys.Date())`, `r as.numeric(format(Sys.Date(),'%d'))`^`r ifelse(weekdays(Sys.Date()) %in% c(1,21,31),'st',ifelse(weekdays(Sys.Date()) %in% c(2,22),'nd',ifelse(weekdays(Sys.Date()) %in% c(3,23),'rd','th')))`^ `r format(Sys.Date(),'%B %Y')`, `r substr(Sys.time(),12,19)` "
+output: 
+  html_document:
+    df: paged
+  params:
+    tableA: NA
+    plotA: NA
+    plotB: NA
+---
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+knitr::opts_chunk$set(message = FALSE)
+library(rmarkdown)
+library(dplyr)
+library(ggplot2)
+library(viridis)
+library(textutils)
+library(kableExtra)
+library(gridExtra)
+```
+
+```{r plots, fig.align='center', fig.height=6, fig.width=12}
+fig1 = params$plotA
+fig2 = params$plotB
+grid.arrange(fig1,fig2,ncol=2)
+```
+
+{{long_text}}
+
+```{r table}
+params$tableA
+```
+

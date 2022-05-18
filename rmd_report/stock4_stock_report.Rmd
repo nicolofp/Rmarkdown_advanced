@@ -1,0 +1,39 @@
+---
+title: "stock4 Report"
+author: "FirstName LastName"
+date: "`r weekdays(Sys.Date())`, `r as.numeric(format(Sys.Date(),'%d'))`^`r ifelse(weekdays(Sys.Date()) %in% c(1,21,31),'st',ifelse(weekdays(Sys.Date()) %in% c(2,22),'nd',ifelse(weekdays(Sys.Date()) %in% c(3,23),'rd','th')))`^ `r format(Sys.Date(),'%B %Y')`, `r substr(Sys.time(),12,19)` "
+output: 
+  html_document:
+    df: paged
+  params:
+    tableA: NA
+    plotA: NA
+    plotB: NA
+---
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+knitr::opts_chunk$set(message = FALSE)
+library(rmarkdown)
+library(dplyr)
+library(ggplot2)
+library(viridis)
+library(textutils)
+library(kableExtra)
+library(gridExtra)
+```
+
+```{r plots, fig.align='center', fig.height=6, fig.width=12}
+fig1 = params$plotA
+fig2 = params$plotB
+grid.arrange(fig1,fig2,ncol=2)
+```
+
+Lorem ipsum dolor sit amet, neglegentur concludaturque mea te, errem mucius mnesarchum has et. Duo id mucius prodesset referrentur. Est in commune partiendo intellegat, quem iuvaret ad qui. Graece deserunt ut usu. His omnium tacimates at, has an soleat tamquam. Labitur adipisci has cu, vix te nisl porro sadipscing, vix suscipit iudicabit ne. Mea epicurei definitionem ad, an virtute epicurei gubergren eum. Ornatus qualisque ocurreret cum et. Has ea dolorum facilisi, in esse movet mollis vis. Cu nec option commodo, an pri putant numquam. At nonumy populo mel, modo deseruisse id duo. Mel accusata expetendis theophrastus te, ex dicta apeirian phaedrum usu. Illum possim pericula ut ius, te fugit suscipit interesset usu, id eum vidit accumsan dissentias. Quem dicit quo ne, ut homero adversarium vim. Nominavi scriptorem qui in, ei dictas deserunt cum. Ne vix soluta deserunt. Sea partem putant aperiri an, et quo rationibus scribentur, mutat aliquip integre at sed. Sonet vocent habemus has ne, est solum accumsan no, at explicari assueverit mel. Vis et dicant semper bonorum, appetere complectitur eam et. Volutpat suscipiantur sit te. Laoreet assentior ei nec. In choro instructior ius, error percipitur sea ad. Mel no clita graecis dissentiet. Eu vim aperiri commune pericula, vis minimum appetere salutandi te. In mel oblique minimum, ne nec alia salutatus honestatis, ex tota decore mediocritatem eos.
+
+```{r table}
+params$tableA
+```
+
